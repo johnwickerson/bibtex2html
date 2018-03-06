@@ -381,7 +381,7 @@ let separate_file (b,((_,k,f) as e)) =
 
 let open_table ch = match !table with
   | Table -> Html.open_balise ch "table"
-  | DL -> Html.open_balise ch "dl"
+  | DL -> Html.open_balise ch "dl class=\"dl-horizontal\""
   | NoTable -> ()
 
 let close_table ch = match !table with
@@ -426,6 +426,14 @@ let one_entry_summary ch biblio (_,b,((_,k,f) as e)) =
   output_string ch "\n\n";
   open_row ch;
   (* JK changes *)
+  let a =
+    try Expand.get_field e "acronym" ^ "&nbsp;"
+    with Not_found -> ""
+  in
+  let y = Expand.get_year e in
+  latex2html ch a;
+  latex2html ch y;
+  (*
   if (not !nokeys) || !multiple then output_string ch "[";
   Html.open_anchor ch k;
   if (not !nokeys) || !multiple then begin
@@ -436,6 +444,7 @@ let one_entry_summary ch biblio (_,b,((_,k,f) as e)) =
     if !table <> NoTable then output_string ch "&nbsp;";
   Html.close_anchor ch;
   if (not !nokeys) || !multiple then output_string ch "]";
+   *)
   (* end of JK changes *)
   output_string ch "\n";
   new_column ch;
