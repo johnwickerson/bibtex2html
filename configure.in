@@ -17,7 +17,8 @@
 # bibtex2html autoconf input
 
 # check for one particular file of the sources
-AC_INIT(bibtex.mli)
+AC_INIT
+AC_CONFIG_SRCDIR([bibtex.mli])
 
 # options
 
@@ -144,6 +145,7 @@ AC_SUBST(EXE)
 AC_SUBST(enable_doc)
 
 # Finally create all the generated files
-AC_OUTPUT(Makefile aux2bib)
+AC_CONFIG_FILES([Makefile aux2bib])
+AC_OUTPUT
 chmod a+x aux2bib
 chmod a-w Makefile
