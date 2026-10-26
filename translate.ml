@@ -449,7 +449,7 @@ let one_entry_summary ch biblio (_,b,((_,k,f) as e)) =
   output_string ch "\n";
   new_column ch;
   latex2html ch b;
-  if !linebreak then Html.open_balise ch "br /";
+  if !linebreak then Html.open_balise ch "br";
   output_string ch "\n";
 
   if !multiple then
